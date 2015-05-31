@@ -441,7 +441,7 @@ CPPFLAGS="$valid_CPPFLAGS"
 LIBS="$valid_LIBS"
 
 AC_MSG_NOTICE([**************************************** write the results])
-AC_CONFIG_FILES([Makefile src/Makefile src/stunnel3 doc/Makefile tools/Makefile tools/stunnel.conf-sample tools/stunnel.init tools/stunnel.service])
+AC_CONFIG_FILES([Makefile src/Makefile doc/Makefile tools/Makefile])
 AC_OUTPUT
 
 AC_MSG_NOTICE([**************************************** success])

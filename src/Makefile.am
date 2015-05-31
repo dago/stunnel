@@ -90,3 +90,10 @@ resources.obj: resources.rc resources.h version.h
 mostlyclean-local:
 	-rm -f *.obj
 
+edit = sed \
+	-e 's|@bindir[@]|$(bindir)|g'
+
+stunnel3: Makefile
+	$(edit) '$(srcdir)/$@.in' >$@
+
+stunnel3: $(srcdir)/stunnel3.in

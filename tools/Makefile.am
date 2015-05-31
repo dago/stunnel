@@ -37,3 +37,17 @@ cert:
 		rm -f stunnel.rnd; \
 	fi
 
+edit = sed \
+	-e 's|@prefix[@]|$(prefix)|g' \
+	-e 's|@bindir[@]|$(bindir)|g' \
+	-e 's|@localstatedir[@]|$(localstatedir)|g' \
+	-e 's|@sysconfdir[@]|$(sysconfdir)|g' \
+	-e 's|@DEFAULT_GROUP[@]|$(DEFAULT_GROUP)|g'
+
+stunnel.conf-sample stunnel.init stunnel.service: Makefile
+	$(edit) '$(srcdir)/$@.in' >$@
+
+stunnel.conf-sample: $(srcdir)/stunnel.conf-sample.in
+stunnel.init: $(srcdir)/stunnel.init.in
+stunnel.service: $(srcdir)/stunnel.service.in
+

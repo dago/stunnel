@@ -19,3 +19,11 @@ SUFFIXES = .pod .8 .html
 	pod2html --noindex --title stunnel.8 --infile=$< --outfile=$@
 	rm -f pod2htmd.tmp pod2htmi.tmp
 
+edit = sed \
+	-e 's|@bindir[@]|$(bindir)|g' \
+	-e 's|@sysconfdir[@]|$(sysconfdir)|g'
+
+stunnel.pod: Makefile
+	$(edit) '$(srcdir)/$@.in' >$@
+
+stunnel.pod: $(srcdir)/stunnel.pod
